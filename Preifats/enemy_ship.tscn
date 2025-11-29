@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq4160yfq3w1w"]
+
+[ext_resource type="Script" uid="uid://clar1q755t0iv" path="res://Scripts/enemy_ship.gd" id="1_w8cef"]
+[ext_resource type="Texture2D" uid="uid://dr0icrxa0a547" path="res://Sprites/Space Pixel/Space Pixel/UfoBlue.png" id="2_2u0vd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0fju"]
+radius = 23.409399
+
+[node name="enemy_ship" type="CharacterBody2D"]
+position = Vector2(56, 37)
+script = ExtResource("1_w8cef")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_2u0vd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h0fju")

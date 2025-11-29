@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://g0gy1fii84di"]
+
+[ext_resource type="FontFile" uid="uid://bmgatpalxauxg" path="res://Classic-Font.ttf" id="1_05efo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4u86"]
+bg_color = Color(0.40784314, 0.23529412, 0.68235296, 0.69803923)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p3s2"]
+bg_color = Color(0.6431373, 0.50980395, 0.92156863, 0.6156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5803922, 0.49019608, 0.69803923, 0.9098039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvmop"]
+bg_color = Color(0.74509805, 0.4117647, 1, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_05efo")
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_x4u86")
+Button/styles/normal = SubResource("StyleBoxFlat_8p3s2")
+Button/styles/pressed = SubResource("StyleBoxFlat_bvmop")

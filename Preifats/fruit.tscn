@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://qxs5ct2h4c4r"]
+
+[ext_resource type="Script" path="res://Scripts/fruit.gd" id="1_kf3b2"]
+[ext_resource type="Texture2D" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/01.png" id="2_coin1"]
+[ext_resource type="Texture2D" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/02.png" id="3_coin2"]
+[ext_resource type="Texture2D" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/03.png" id="4_coin3"]
+[ext_resource type="Texture2D" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/04.png" id="5_coin4"]
+[ext_resource type="Texture2D" uid="uid://b187f3b2tmeo6" path="res://Sprites/Items/Fruits/Collected.png" id="6_collected"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_collected1"]
+atlas = ExtResource("6_collected")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_collected2"]
+atlas = ExtResource("6_collected")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_collected3"]
+atlas = ExtResource("6_collected")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_collected4"]
+atlas = ExtResource("6_collected")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_collected5"]
+atlas = ExtResource("6_collected")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_collected6"]
+atlas = ExtResource("6_collected")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_coin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_coin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_coin2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_coin3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_coin4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_collected1")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_collected2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_collected3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_collected4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_collected5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_collected6")
+}],
+"loop": false,
+"name": &"Collected",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hwhh"]
+radius = 7.0
+
+[node name="Fruit" type="Area2D"]
+script = ExtResource("1_kf3b2")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_coin")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5hwhh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

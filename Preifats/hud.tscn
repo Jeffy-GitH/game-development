@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://mniqw7b2orty"]
+
+[ext_resource type="Script" uid="uid://cbmxx6glggqbk" path="res://hud.gd" id="1_ipo8s"]
+[ext_resource type="Texture2D" uid="uid://c70ir4fcqd6op" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/01.png" id="2_coin1"]
+[ext_resource type="Texture2D" uid="uid://do0gg6cwerui7" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/02.png" id="3_coin2"]
+[ext_resource type="Texture2D" uid="uid://dtecyjovjmmaj" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/03.png" id="4_coin3"]
+[ext_resource type="Texture2D" uid="uid://c5i8nths28u3j" path="res://Sprites/Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/04.png" id="5_coin4"]
+[ext_resource type="FontFile" uid="uid://d0joq6v8gvy31" path="res://Fonts/Pixeled.ttf" id="6_nxico"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_coin_hud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_coin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_coin2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_coin3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_coin4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ipo8s")
+
+[node name="Sco" type="Node2D" parent="."]
+position = Vector2(7, -3)
+
+[node name="Score frut" type="AnimatedSprite2D" parent="Sco"]
+position = Vector2(19, 20)
+scale = Vector2(0.605263, 0.657895)
+sprite_frames = SubResource("SpriteFrames_coin_hud")
+autoplay = "default"
+
+[node name="Score" type="Label" parent="Sco"]
+offset_left = 30.0
+offset_top = 3.0
+offset_right = 80.0
+offset_bottom = 39.0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_nxico")
+theme_override_font_sizes/font_size = 10
+
+[node name="Lives" type="Node2D" parent="."]
+position = Vector2(192, 17)

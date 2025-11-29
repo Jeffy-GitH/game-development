@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnft4osfkn6h3"]
+
+[ext_resource type="Script" uid="uid://bla7thauyuknn" path="res://Scripts/saw.gd" id="1_j2yjl"]
+[ext_resource type="Texture2D" uid="uid://db6nyqi1dewxq" path="res://Sprites/Kings and Pigs/Sprites/03-Pig/Attack (34x28).png" id="2_axquc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoumi"]
+atlas = ExtResource("2_axquc")
+region = Rect2(0, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soj6g"]
+atlas = ExtResource("2_axquc")
+region = Rect2(34, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrebw"]
+atlas = ExtResource("2_axquc")
+region = Rect2(68, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yafhy"]
+atlas = ExtResource("2_axquc")
+region = Rect2(102, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wur1"]
+atlas = ExtResource("2_axquc")
+region = Rect2(136, 0, 34, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5cmhy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoumi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soj6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrebw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yafhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wur1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 18.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7e4rv"]
+radius = 11.401754
+
+[node name="Saw" type="Area2D" groups=["Player"]]
+position = Vector2(-1, -2)
+script = ExtResource("1_j2yjl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5cmhy")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.9164557
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 4)
+shape = SubResource("CircleShape2D_7e4rv")
+one_way_collision_margin = 10.2
+debug_color = Color(0.496022, 0.504234, 0.775711, 0.42)
+metadata/_edit_group_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

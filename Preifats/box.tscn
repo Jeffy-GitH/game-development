@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyr0htbgaokbv"]
+
+[ext_resource type="Script" path="res://Scripts/box.gd" id="1_bv4hk"]
+[ext_resource type="Texture2D" uid="uid://dg5jppjueiosq" path="res://Sprites/Items/Boxes/Box1/Hit (28x24).png" id="2_g14tn"]
+[ext_resource type="Texture2D" uid="uid://diewwaw7kpovo" path="res://Sprites/Items/Boxes/Box1/Idle.png" id="3_0t5fh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o48n0"]
+atlas = ExtResource("2_g14tn")
+region = Rect2(0, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5utje"]
+atlas = ExtResource("2_g14tn")
+region = Rect2(28, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxd75"]
+atlas = ExtResource("2_g14tn")
+region = Rect2(56, 0, 28, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5d16y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o48n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5utje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxd75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0t5fh")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0t5fh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kjtt"]
+size = Vector2(26, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp21c"]
+size = Vector2(27, 20)
+
+[node name="box" type="StaticBody2D"]
+position = Vector2(75, 92)
+script = ExtResource("1_bv4hk")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5d16y")
+animation = &"Hit"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1kjtt")
+debug_color = Color(0.968487, 0, 0.46755, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_rp21c")
+metadata/_edit_group_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 19
+one_shot = true
+explosiveness = 1.0
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 60)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_max = 116.36
+linear_accel_min = 2.05
+linear_accel_max = 2.05
+radial_accel_min = 18.18
+radial_accel_max = 18.18
+angle_max = 360.0
+scale_amount_max = 10.0
+color = Color(0.188235, 0.945098, 0.741176, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
